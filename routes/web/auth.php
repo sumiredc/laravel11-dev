@@ -5,9 +5,7 @@ declare(strict_types=1);
 use App\Http\Controllers\SingIn\SignInStoreController;
 use Illuminate\Support\Facades\Route;
 
-Route::name('login')->get('login', static function () {
-    return redirect(route('index'));
-});
+Route::name('login')->get('login', static fn () => redirect(route('index')));
 
 Route::middleware('guest')
     ->prefix('sign-in')
