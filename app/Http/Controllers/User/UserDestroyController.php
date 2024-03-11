@@ -32,7 +32,7 @@ final class UserDestroyController extends Controller
             $this->userDestroyUseCase->execute($user);
 
             return redirect(route('user.index'))
-                ->with(['success' => __('Deleted successfully.')]);;
+                ->with(['success' => __('Deleted successfully.')]);
         } catch (Exception $ex) {
             $this->rollback();
             throw $ex;
