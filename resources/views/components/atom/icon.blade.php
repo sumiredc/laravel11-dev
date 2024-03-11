@@ -1,1 +1,1 @@
-<i {{ $attributes->class('bi', "bi-{$type}") }}></i>
+<i {{ $attributes->class(['bi', "bi-{$type}"]) }}></i>

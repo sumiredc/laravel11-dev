@@ -1,0 +1,39 @@
+$primary: #ff2d20;
+$secondary: #171923;
+$brand: $primary;
+$accent: #8338ed;
+$success: #20a033;
+$info: $accent;
+$warning: #b28f03;
+$danger: $primary;
+
+$brand-100: tint-color($brand, 80%);
+$brand-200: tint-color($brand, 60%);
+$brand-300: tint-color($brand, 40%);
+$brand-400: tint-color($brand, 20%);
+$brand-500: $brand;
+$brand-600: shade-color($brand, 20%);
+$brand-700: shade-color($brand, 40%);
+$brand-800: shade-color($brand, 60%);
+$brand-900: shade-color($brand, 80%);
+
+$brands: (
+    "brand": $brand,
+    "brand-100": $brand-100,
+    "brand-200": $brand-200,
+    "brand-300": $brand-300,
+    "brand-400": $brand-400,
+    "brand-500": $brand-500,
+    "brand-600": $brand-600,
+    "brand-700": $brand-700,
+    "brand-800": $brand-800,
+    "brand-900": $brand-900,
+);
+
+$white: #fff;
+$black: #000;
+
+$colors: (
+    "black": $black,
+    "white": $white,
+);

@@ -2,13 +2,16 @@
 
 @section('title', collect([__('Show'), $user->name])->join('-'))
 
-@section('content')
+@section('breadcrumb')
     <x-molecule.breadcrumb :items="[['label' => __('List'), 'href' => route('user.index')], ['label' => $user->name]]" />
+@endsection
+
+@section('content')
     <h1 class="my-3">{{ $user->name }}</h1>
     <div class="mb-3 d-flex gap-3">
-        <x-atom.button class="btn-primary" :href="route('user.edit', $user)">{{ __('Edit') }}</x-atom.button>
-        <x-atom.button class="btn-danger" data-bs-toggle="modal" data-bs-target="#userDeleteModdal"
-            :disabled="Gate::denies('delete', $user)">{{ __('Delete') }}</x-atom.button>
+        <x-atom.button class="btn-primary" :href="route('user.edit', $user)" icon="pen">{{ __('Edit') }}</x-atom.button>
+        <x-atom.button class="btn-danger" data-bs-toggle="modal" data-bs-target="#userDeleteModdal" :disabled="Gate::denies('delete', $user)"
+            icon="trash">{{ __('Delete') }}</x-atom.button>
         @can('delete', $user)
             <x-organism.user.delete-modal id="userDeleteModdal" :$user />
         @endcan
@@ -41,6 +44,7 @@
         </div>
     </section>
     <div class="d-flex justify-content-center my-5">
-        <x-atom.button :href="route('user.index')" class="btn-secondary">{{ __('Return to List') }}</x-atom.button>
+        <x-atom.button :href="route('user.index')" class="btn-link icon-link"
+            icon="list">{{ __('Return to List') }}</x-atom.button>
     </div>
 @endsection

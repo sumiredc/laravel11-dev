@@ -1,0 +1,7 @@
+body.guest {
+    @extend .text-white;
+}
+body.authenticated {
+    @extend .bg-secondary;
+    @extend .text-white;
+}

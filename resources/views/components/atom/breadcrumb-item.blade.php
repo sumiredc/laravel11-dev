@@ -1,7 +1,7 @@
-<li {{ $attributes->class(['breadcrumb-item', 'active'])->merge($current ? ['aria-current' => 'page'] : []) }}
+<li {{ $attributes->class(['breadcrumb-item', 'active' => $current])->merge($current ? ['aria-current' => 'page'] : []) }}
     aria-current="page">
     @if ($href)
-        <a href="{{ $href }}">{{ $slot }}</a>
+        <a href="{{ $href }}" class="text-white">{{ $slot }}</a>
     @else
         {{ $slot }}
     @endif

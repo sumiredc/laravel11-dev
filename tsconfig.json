@@ -1,0 +1,24 @@
+{
+    "compilerOptions": {
+    "target": "es2022",
+    "lib": ["es2022", "dom", "dom.iterable"],
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "noImplicitAny": false,
+    "sourceMap": false ,
+      "baseUrl": "./resources/ts",
+      "paths": {
+        "@/*": [
+          "./app/*"
+       ],
+        "@ex/*": [
+          "./extensions/*"
+        ],
+    },
+    "typeRoots": ["node_modules/@types", "resources/ts/types"]
+    },
+    "include": [
+      "./resources/ts/*.ts",
+      "./resources/ts/**/*.ts"
+    ]
+}

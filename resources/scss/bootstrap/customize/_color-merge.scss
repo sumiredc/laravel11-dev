@@ -1,0 +1,10 @@
+$theme-colors: map-merge(
+    $theme-colors,
+    (
+        "accent": $accent,
+    )
+);
+$theme-colors: map-merge($theme-colors, $brands);
+$theme-colors: map-merge($theme-colors, $colors);
+
+$min-contrast-ratio: 1.9;

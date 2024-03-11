@@ -1,0 +1,26 @@
+// 1. functions
+@import "bootstrap/scss/functions";
+
+// 2. customize
+@import "./customize/before";
+
+// 3. default
+@import "bootstrap/scss/variables", "bootstrap/scss/variables-dark";
+
+// 4. customize after
+@import "./customize/after";
+
+// 5.mapping
+@import "bootstrap/scss/maps", "bootstrap/scss/mixins", "bootstrap/scss/root";
+
+// utilities
+@import "./utilities/index";
+
+// forms
+@import "./forms/form-control", "./forms/form-label", "./forms/select";
+
+// components
+@import "./components/index";
+
+// 99. main
+@import "bootstrap/scss/bootstrap";

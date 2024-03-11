@@ -2,13 +2,16 @@
 
 @section('title', collect([__('Edit'), $user->name])->join('-'))
 
-@section('content')
-    <h1 class="my-3">{{ __('User Edit') }}</h1>
+@section('breadcrumb')
     <x-molecule.breadcrumb :items="[
         ['label' => __('List'), 'href' => route('user.index')],
         ['label' => $user->name, 'href' => route('user.show', $user)],
         ['label' => __('Edit')],
     ]" />
+@endsection
+
+@section('content')
+    <h1 class="my-3">{{ __('User Edit') }}</h1>
     @if ($hasSuccessMessage())
         <div class="alert alert-success">
             {{ $successMessage() }}
@@ -27,7 +30,9 @@
                 <x-atom.input name="email" :value="old('email', $user->email)">
                     @slot('label', __('Email'))
                 </x-atom.input>
-                <x-atom.button type="submit" class="btn-primary btn-lg">{{ __('Update') }}</x-atom.button>
+                <hr>
+                <x-atom.button type="submit" class="btn-primary btn-lg"
+                    icon="arrow-clockwise">{{ __('Update') }}</x-atom.button>
             </div>
             <div class="card-footer d-flex gap-3">
                 <small><strong>{{ __('Created At') }}</strong>: {{ $user->created_at->format('Y-m-d H:i:s') }}</small>
@@ -37,6 +42,7 @@
     </x-atom.form>
 
     <div class="d-flex justify-content-center my-5">
-        <x-atom.button :href="route('user.show', $user)" class="btn-secondary">{{ __('Return to Details') }}</x-atom.button>
+        <x-atom.button :href="route('user.show', $user)" class="btn-link icon-link"
+            icon="file-earmark">{{ __('Return to Details') }}</x-atom.button>
     </div>
 @endsection

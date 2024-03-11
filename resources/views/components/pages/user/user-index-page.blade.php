@@ -6,11 +6,14 @@
 
 @section('title', __('User List'))
 
-@section('content')
+@section('breadcrumb')
     <x-molecule.breadcrumb :items="[['label' => __('List')]]" />
+@endsection
+
+@section('content')
     <h1 class="my-3">{{ __('User List') }}</h1>
     <div class="mb-3 d-flex gap-3">
-        <x-atom.button class="btn-primary" :href="route('user.create')">{{ __('Create') }}</x-atom.button>
+        <x-atom.button class="btn-primary" :href="route('user.create')" icon="plus-circle">{{ __('Create') }}</x-atom.button>
     </div>
     <div class="list-group">
         <div class="d-flex list-group-item list-group-item-dark fw-bold">

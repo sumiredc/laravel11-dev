@@ -1,4 +1,4 @@
-<nav aria-label="breadcrumb">
+<nav {{ $attributes->merge(['aria-label' => 'breadcrumb']) }}>
     <ol class="breadcrumb">
         @foreach ($items as $item)
             <x-atom.breadcrumb-item :current="$loop->last" :href="$item['href'] ?? ''">

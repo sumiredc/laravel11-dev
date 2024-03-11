@@ -2,8 +2,12 @@
 
 @section('title', __('User Create'))
 
-@section('content')
+@section('breadcrumb')
     <x-molecule.breadcrumb :items="[['label' => __('List'), 'href' => route('user.index')], ['label' => __('Create')]]" />
+@endsection
+
+@section('content')
+
     <h1 class="my-3">{{ __('User Create') }}</h1>
     <x-atom.form method="POST" :action="route('user.store')">
         <section class="card">
@@ -17,11 +21,13 @@
                 <x-atom.input name="email" :value="old('email')">
                     @slot('label', __('Email'))
                 </x-atom.input>
-                <x-atom.button type="submit" class="btn-primary btn-lg">{{ __('Create') }}</x-atom.button>
+                <hr>
+                <x-atom.button type="submit" class="btn-primary btn-lg" icon="plus-circle">{{ __('Create') }}</x-atom.button>
             </div>
         </section>
     </x-atom.form>
     <div class="d-flex justify-content-center my-5">
-        <x-atom.button :href="route('user.index')" class="btn-secondary">{{ __('Return to List') }}</x-atom.button>
+        <x-atom.button :href="route('user.index')" class="btn-link icon-link"
+            icon="list">{{ __('Return to List') }}</x-atom.button>
     </div>
 @endsection
