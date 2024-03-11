@@ -3,6 +3,7 @@
 @section('title', collect([__('Show'), $user->name])->join('-'))
 
 @section('content')
+    <x-molecule.breadcrumb :items="[['label' => __('List'), 'href' => route('user.index')], ['label' => $user->name]]" />
     <h1 class="my-3">{{ $user->name }}</h1>
     <div class="mb-3 d-flex gap-3">
         <x-atom.button class="btn-primary" :href="route('user.edit', $user)">{{ __('Edit') }}</x-atom.button>

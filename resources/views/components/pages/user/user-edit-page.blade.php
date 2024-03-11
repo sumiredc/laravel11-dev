@@ -4,6 +4,11 @@
 
 @section('content')
     <h1 class="my-3">{{ __('User Edit') }}</h1>
+    <x-molecule.breadcrumb :items="[
+        ['label' => __('List'), 'href' => route('user.index')],
+        ['label' => $user->name, 'href' => route('user.show', $user)],
+        ['label' => __('Edit')],
+    ]" />
     @if ($hasSuccessMessage())
         <div class="alert alert-success">
             {{ $successMessage() }}

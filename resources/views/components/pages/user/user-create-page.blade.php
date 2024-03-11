@@ -3,7 +3,7 @@
 @section('title', __('User Create'))
 
 @section('content')
-
+    <x-molecule.breadcrumb :items="[['label' => __('List'), 'href' => route('user.index')], ['label' => __('Create')]]" />
     <h1 class="my-3">{{ __('User Create') }}</h1>
     <x-atom.form method="POST" :action="route('user.store')">
         <section class="card">
@@ -21,5 +21,7 @@
             </div>
         </section>
     </x-atom.form>
-
+    <div class="d-flex justify-content-center my-5">
+        <x-atom.button :href="route('user.index')" class="btn-secondary">{{ __('Return to List') }}</x-atom.button>
+    </div>
 @endsection

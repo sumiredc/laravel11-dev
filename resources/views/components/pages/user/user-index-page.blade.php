@@ -7,6 +7,7 @@
 @section('title', __('User List'))
 
 @section('content')
+    <x-molecule.breadcrumb :items="[['label' => __('List')]]" />
     <h1 class="my-3">{{ __('User List') }}</h1>
     <div class="mb-3 d-flex gap-3">
         <x-atom.button class="btn-primary" :href="route('user.create')">{{ __('Create') }}</x-atom.button>
