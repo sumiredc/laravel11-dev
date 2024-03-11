@@ -1,7 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+declare(strict_types=1);
 
-Route::get('/', function () {
-    return view('welcome');
-});
+$targetDir = 'routes/web/';
+$paths = glob(base_path("{$targetDir}*"));
+foreach ($paths as $path) {
+    include_once $path;
+}
