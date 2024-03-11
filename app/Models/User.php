@@ -1,30 +1,34 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Casts\User\UserEmailStatusCast;
+use App\Enums\Authority;
+use App\Models\Builder\ScopeWhereLike;
+use App\Observers\UserObserver;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+#[ObservedBy([UserObserver::class])]
+final class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable, ScopeWhereLike;
 
     /**
-     * The attributes that are mass assignable.
-     *
      * @var array<int, string>
      */
     protected $fillable = [
+        'authority',
         'name',
         'email',
         'password',
     ];
 
     /**
-     * The attributes that should be hidden for serialization.
-     *
      * @var array<int, string>
      */
     protected $hidden = [
@@ -33,15 +37,44 @@ class User extends Authenticatable
     ];
 
     /**
-     * Get the attributes that should be cast.
-     *
+     * @var array<int, string>
+     */
+    protected $casts = [
+        'email_status' => UserEmailStatusCast::class,
+    ];
+
+    /**
      * @return array<string, string>
      */
     protected function casts(): array
     {
         return [
-            'email_verified_at' => 'datetime',
+            'id' => 'integer',
+            'uuid' => 'string',
+            'authority' => Authority::class,
+            'name' => 'string',
+            'email' => 'string',
             'password' => 'hashed',
+            'remember_token' => 'string',
+            'email_verified_at' => 'datetime',
+            'created_at' => 'datetime',
+            'updated_at' => 'datetime',
         ];
+    }
+
+    /**
+     * @return bool
+     */
+    public function isAdministrator(): bool
+    {
+        return $this->authority === Authority::Administrator;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isCustomer(): bool
+    {
+        return $this->authority === Authority::Customer;
     }
 }
