@@ -6,8 +6,8 @@
     <h1 class="text-center my-5 fw-bold">{{ __('Laravel 11') }}</h1>
     <section class="py-5 d-flex justify-content-center">
         <div class="w-100" style="max-width:500px;">
-            <h2>{{ __('Login') }}</h2>
-            <div class="card card-body gap-3">
+            <h2 class="mb-3"><span class="me-2 text-brand">#</span>{{ __('Login') }}</h2>
+            <div class="card card-body bg-secondary gap-3">
                 <x-atom.form method="POST" :action="route('sign-in.store')">
                     <div class="d-grid gap-3">
                         <div class="form-floating">
