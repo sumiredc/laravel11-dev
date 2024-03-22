@@ -11,7 +11,7 @@ final class IndexController extends Controller
 {
     /**
      * @param  IndexRequest $request
-     * @return View
+     * @return string
      */
     public function __invoke(IndexRequest $request): string
     {

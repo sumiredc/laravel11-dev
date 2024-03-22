@@ -15,7 +15,7 @@ final class UserShowController extends Controller
     /**
      * @param  UserShowRequest $request
      * @param  User            $user
-     * @return View
+     * @return string
      */
     public function __invoke(UserShowRequest $request, User $user): string
     {

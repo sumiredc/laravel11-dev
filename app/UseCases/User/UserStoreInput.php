@@ -7,7 +7,7 @@ namespace App\UseCases\User;
 use App\Enums\Authority;
 use App\UseCases\InputInterface;
 
-final class UserStoreInput implements InputInterface
+readonly final class UserStoreInput implements InputInterface
 {
     /**
      * @param Authority $authority

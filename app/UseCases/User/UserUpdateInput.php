@@ -6,7 +6,7 @@ namespace App\UseCases\User;
 
 use App\UseCases\InputInterface;
 
-final class UserUpdateInput implements InputInterface
+readonly final class UserUpdateInput implements InputInterface
 {
     /**
      * @param string $name

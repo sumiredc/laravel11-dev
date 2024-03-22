@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Requests\User;
 
+use App\Exceptions\Request\InvalidatedValueException;
 use App\Http\Requests\FormRequest;
 use App\Rules\User\UserEmailRule;
 use App\Rules\User\UserNameRule;
@@ -34,7 +35,13 @@ final class UserUpdateRequest extends FormRequest
      */
     public function validatedName(): string
     {
-        return $this->validated('name', '');
+        $name = $this->validated('name', '');
+
+        if (empty($name)) {
+            throw new InvalidatedValueException('name');
+        }
+
+        return $name;
     }
 
     /**
@@ -42,6 +49,12 @@ final class UserUpdateRequest extends FormRequest
      */
     public function validatedEmail(): string
     {
-        return $this->validated('email', '');
+        $email = $this->validated('email', '');
+
+        if (empty($email)) {
+            throw new InvalidatedValueException('email');
+        }
+
+        return $email;
     }
 }

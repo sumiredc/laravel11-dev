@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Requests\User;
 
 use App\Enums\Authority;
+use App\Exceptions\Request\InvalidatedValueException;
 use App\Http\Requests\FormRequest;
 use App\Models\User;
 use App\Rules\User\UserEmailRule;
@@ -42,6 +43,7 @@ final class UserStoreRequest extends FormRequest
     {
         $value = intval($this->validated('authority', -1));
         $authority = Authority::tryFrom($value);
+
         if (is_null($authority)) {
             throw new InvalidArgumentException;
         }
@@ -54,7 +56,13 @@ final class UserStoreRequest extends FormRequest
      */
     public function validatedName(): string
     {
-        return $this->validated('name', '');
+        $name = $this->validated('name', '');
+
+        if (empty($name)) {
+            throw new InvalidatedValueException('name');
+        }
+
+        return $name;
     }
 
     /**
@@ -62,6 +70,12 @@ final class UserStoreRequest extends FormRequest
      */
     public function validatedEmail(): string
     {
-        return $this->validated('email', '');
+        $email = $this->validated('email', '');
+
+        if (empty($email)) {
+            throw new InvalidatedValueException('email');
+        }
+
+        return $email;
     }
 }
