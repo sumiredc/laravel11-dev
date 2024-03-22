@@ -11,6 +11,7 @@ export default defineConfig({
     resolve: {
         alias: {
             "@/": `${__dirname}/resources/ts/app/`,
+            "@api/": `${__dirname}/resources/ts/api/`,
             "@ex/": `${__dirname}/resources/ts/extensions/`,
         },
     },

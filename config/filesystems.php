@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+use App\Enums\StorageDisk;
+
 return [
 
     /*
@@ -74,5 +76,19 @@ return [
     'links' => [
         public_path('storage') => storage_path('app/public'),
     ],
+
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Save Paths
+    |--------------------------------------------------------------------------
+    */
+    'paths' => [
+        'profile' => [
+            'dir' => 'profile/',
+            'disk' => StorageDisk::Local
+        ]
+    ]
 
 ];

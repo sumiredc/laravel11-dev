@@ -1,54 +1,59 @@
 import axios, {
-  AxiosError,
-  AxiosInstance,
-  AxiosResponse,
-  InternalAxiosRequestConfig,
+    AxiosError,
+    AxiosInstance,
+    AxiosResponse,
+    InternalAxiosRequestConfig,
 } from "axios";
 
-const headers = {
-  "Content-Type": "application/json",
-  "X-Requested-With": "XMLHttpRequest",
-};
-
 function requestCallback(
-  request: InternalAxiosRequestConfig
+    request: InternalAxiosRequestConfig
 ): InternalAxiosRequestConfig {
-  return request;
+    return request;
 }
 
 function responseCallback(response: AxiosResponse): AxiosResponse {
-  return response;
+    return response;
 }
 
 function errorCallback(error: AxiosError): unknown {
-  throw error;
+    throw error;
 }
 
-type Handlers = {
-  handleRequest?: typeof requestCallback;
-  handleReponse?: typeof responseCallback;
-  handleError?: typeof errorCallback;
+export enum ContentType {
+    MULTIPART_FORM_DATA = "multipart/form-data",
+    JSON = "application/json",
+}
+
+export enum XRequestedWith {
+    XML_HTTP_REQUEST = "XMLHttpRequest",
+}
+
+export enum ResponseType {
+    JSON = "json",
+}
+
+export type Handlers = {
+    handleRequest?: typeof requestCallback;
+    handleReponse?: typeof responseCallback;
+    handleError?: typeof errorCallback;
+};
+
+export type ErrorResponseData = {
+    message: string;
+    errors?: { [key: string]: string };
 };
 
 export class AxiosConnection {
-  public readonly axios: AxiosInstance = axios.create({
-    withCredentials: true,
-    responseType: "json",
-    headers,
-  });
+    public readonly axios: AxiosInstance;
 
-  constructor({
-    handleRequest = requestCallback,
-    handleReponse = responseCallback,
-    handleError = errorCallback,
-  }: Handlers) {
-    const { request, response } = this.axios.interceptors;
-    request.use(handleRequest);
-    response.use(handleReponse, handleError);
-  }
+    constructor({
+        handleRequest = requestCallback,
+        handleReponse = responseCallback,
+        handleError = errorCallback,
+    }: Handlers = {}) {
+        this.axios = axios.create();
+        const { request, response } = this.axios.interceptors;
+        request.use(handleRequest);
+        response.use(handleReponse, handleError);
+    }
 }
-
-export type ErrorResponseData = {
-  message: string;
-  errors?: { [key: string]: string };
-};

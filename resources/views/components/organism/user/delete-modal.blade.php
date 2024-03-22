@@ -2,11 +2,11 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">User Delete</h4>
+                <h4 class="modal-title">{{ __('User Delete') }}</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <h5 class="fw-bold">ID:{{ $user->id }} - {{ $user->name }}</h5>
+                <h5 class="fw-bold">{{ __('ID') }}:{{ $user->id }} - {{ $user->name }}</h5>
                 <p>{{ __('Are you sure you want to delete this user information?') }}</p>
                 <div class="alert alert-warning small m-0">{{ __('This action cannot be undone.') }}</div>
             </div>

@@ -20,23 +20,32 @@
         <div class="card-header">
             <span><strong>{{ __('ID') }}</strong>: {{ $user->id }}</span>
         </div>
-        <div class="card-body d-grid gap-3">
-            <x-atom.plain-text>
-                {{ $user->authority->name }}
-                @slot('label', __('Authority'))
-            </x-atom.plain-text>
-            <x-atom.plain-text>
-                {{ $user->name }}
-                @slot('label', __('Name'))
-            </x-atom.plain-text>
-            <x-atom.plain-text>
-                {{ $user->email }}
-                @slot('label', __('Email'))
-            </x-atom.plain-text>
-            <x-atom.plain-text>
-                {{ $user->email_verified_at?->format('Y-m-d H:i:s') }}
-                @slot('label', __('Email Verified'))
-            </x-atom.plain-text>
+        <div class="card-body d-flex gap-3">
+            <div class="d-grid gap-3" style="flex-basis: 70%;">
+                <x-atom.plain-text>
+                    {{ $user->authority->name }}
+                    @slot('label', __('Authority'))
+                </x-atom.plain-text>
+                <x-atom.plain-text>
+                    {{ $user->name }}
+                    @slot('label', __('Name'))
+                </x-atom.plain-text>
+                <x-atom.plain-text>
+                    {{ $user->email }}
+                    @slot('label', __('Email'))
+                </x-atom.plain-text>
+                <x-atom.plain-text>
+                    {{ $user->email_verified_at?->format('Y-m-d H:i:s') }}
+                    @slot('label', __('Email Verified'))
+                </x-atom.plain-text>
+            </div>
+            <div class="d-flex justify-content-center align-items-center" style="flex-basis: 30%;">
+                <div data-bs-target="#profileUploadModal" data-bs-toggle="modal" style="cursor: pointer;"
+                    id="profileImageContainer">
+                    <x-molecule.profile.image :profile="$user->profile" />
+                </div>
+                <x-organism.profile.upload-modal :$user id="profileUploadModal" />
+            </div>
         </div>
         <div class="card-footer d-flex gap-3">
             <small><strong>{{ __('Created At') }}</strong>: {{ $user->created_at->format('Y-m-d H:i:s') }}</small>

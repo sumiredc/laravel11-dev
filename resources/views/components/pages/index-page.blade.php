@@ -8,7 +8,7 @@
         <div class="w-100" style="max-width:500px;">
             <h2 class="mb-3"><span class="me-2 text-brand">#</span>{{ __('Login') }}</h2>
             <div class="card card-body bg-secondary gap-3">
-                <x-atom.form method="POST" :action="route('sign-in.store')">
+                <x-atom.form method="POST" action="{{ route('sign-in.store') }}">
                     <div class="d-grid gap-3">
                         <div class="form-floating">
                             <input type="email" class="form-control" placeholder="name@example.com" name="email"

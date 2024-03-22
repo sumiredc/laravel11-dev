@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title')</title>
@@ -11,11 +10,13 @@
 
 <body @class([Auth::check() ? 'authenticated' : 'guest'])>
 
-    <div class="bg-brand">
-        <div class="container">
-            @yield('breadcrumb')
+    @hasSection('breadcrumb')
+        <div class="bg-brand">
+            <div class="container">
+                @yield('breadcrumb')
+            </div>
         </div>
-    </div>
+    @endif
 
     <main class="container">
         @yield('content')
