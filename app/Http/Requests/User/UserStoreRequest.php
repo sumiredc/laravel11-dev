@@ -31,7 +31,7 @@ final class UserStoreRequest extends FormRequest
         return [
             'authority' => ['required', app(Enum::class, ['type' => Authority::class])],
             'name' => ['required', app(UserNameRule::class)],
-            'email' => ['required', app(UserEmailRule::class, ['table', app(User::class)->getTable()])],
+            'email' => ['required', app(UserEmailRule::class)],
         ];
     }
 

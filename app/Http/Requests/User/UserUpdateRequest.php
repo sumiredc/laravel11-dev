@@ -26,7 +26,10 @@ final class UserUpdateRequest extends FormRequest
     {
         return [
             'name' => ['required', app(UserNameRule::class)],
-            'email' => ['required', app(UserEmailRule::class)],
+            'email' => [
+                'required',
+                app(UserEmailRule::class, ['ignoreUserId' => $this->route('user')->id])
+            ],
         ];
     }
 
