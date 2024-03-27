@@ -30,9 +30,6 @@ export class ProfileUploadInputViewModel
                 data: { component },
             } = await this._profileClient.upload(userId, formData);
 
-            console.log(this._containerEl);
-            console.log(component.html);
-
             this._containerEl.innerHTML = component.html;
         } catch (error) {
             // TODO: エラー処理 未対応
