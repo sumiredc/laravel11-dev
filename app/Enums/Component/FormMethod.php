@@ -12,6 +12,9 @@ enum FormMethod: string
     case Patch = 'patch';
     case Delete = 'delete';
 
+    /**
+     * @return string
+     */
     public function original(): string
     {
         return match ($this) {
